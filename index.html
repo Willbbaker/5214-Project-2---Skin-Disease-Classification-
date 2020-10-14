@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<style>
+
+    div.a {
+        text-align: center;
+    }
+
+    body {
+        background-color: rgb(255, 255, 255);
+    }
+</style>
+
+<body>
+    <h1><img src="https://img.icons8.com/ios-glyphs/60/000000/dermatology.png" alt="Dermstology Icon"> <b style="color:rgb(19, 30, 94);">Skin Disease Classifier</b></h1>
+    <title>Skin Disease Classifier</title>
+    
+
+    <div class="a">
+
+        <p style="color:rgb(19, 30, 94);"> <b>Upload a Dermoscopic Image for Classification</b></p>
+        <p style="color:rgb(216, 23, 17);">(RESULTS ARE NOT TO BE TAKEN AS A DIAGNOSIS. PLEASE CONTACT A LICENSED DERMATOLOGIST FOR AN ACCURATE DIAGNOSIS.)</p>
+
+        <form method ='post' enctype=multipart/form-data>
+  		<input type="file" name="file">
+  		<input type="submit" value="upload">
+
+       <!--  <head>        
+        	<link rel="stylesheet" type="text/css" href="index.css">
+        	<button class="btn">Upload an Image: <input type="file" accept="image/*" name="" id="img_input" placeholder="" /> </button>
+    	</head> -->
+
+ 
+    </div>
+
+
+
+
+
+
+
+    <script>
+        // Once the site has loadded, we add a listener to our file input.
+        // any time a file is uploaded, it will run the readFile function 
+        window.addEventListener( 'load', (e) => {
+            // find the input
+            let img_input = document.querySelector('#img_input')
+
+            // tell the input to call the readFile function on file change
+            img_input.addEventListener('change', readFile);
+        })
+
+        // this function takes the file from the input and reads its content
+        function readFile( e ){
+            // get the file
+            let file = e.target.files[0]
+
+            // makes a file reader
+            const reader = new FileReader();
+
+            // when the reader is done reading
+            reader.onload = () => {
+
+                // get the results of the file. 
+                // from here, do whatever you need to do with the content
+                let file_content = reader.result
+                console.log( file_content )
+            }
+            
+            // start reading the file
+            reader.readAsText(file)
+        }
+    </script>
+</body>
+
+</html>
